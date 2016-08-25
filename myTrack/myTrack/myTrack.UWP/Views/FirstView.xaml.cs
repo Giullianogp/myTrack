@@ -1,26 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Numerics;
+using Windows.UI;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Hosting;
+using myTrack.Core.ViewModels;
+using Microsoft.Graphics.Canvas.Effects;
 using MvvmCross.WindowsUWP.Views;
 
 namespace myTrack.UWP.Views
 {
     public sealed partial class FirstView : MvxWindowsPage
     {
+        private new FirstViewModel ViewModel
+        {
+            get { return (FirstViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
+
         public FirstView()
         {
             this.InitializeComponent();
+            DataContext = ViewModel;
         }
+
+        private void FirstView_OnLoaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void FirstView_OnUnloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

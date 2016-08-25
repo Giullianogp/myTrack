@@ -7,13 +7,56 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:MvvmCross.WindowsUWP.Views"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    Loaded="FirstView_OnLoaded" 
+    Unloaded="FirstView_OnUnloaded">
 
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="{Binding Hello, Mode=OneWay}" />
-            <TextBox Text="{Binding Hello, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+    <Grid x:Name="CompGrid">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
+                <GradientStop Color="#FF6C5B7B" Offset="0"/>
+                <GradientStop Color="#FF355C7D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ListView ItemsSource="{Binding ListaCodigo}" 
+                      VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#33FFFFFF" 
+                          Height="40"
+                          Width="200"
+                          Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="28"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="../Assets/marker.png" 
+                                       Height="25"
+                                       Width="25"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0"
+                                       Text="{Binding Titulo}"
+                                       Foreground="White"
+                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                            <TextBlock Grid.Row="1"
+                                       Text="{Binding Registro}"
+                                       Foreground="White"
+                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                        </Grid>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </views:MvxWindowsPage>

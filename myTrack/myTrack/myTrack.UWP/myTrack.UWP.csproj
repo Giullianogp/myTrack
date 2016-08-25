@@ -108,6 +108,9 @@
     <None Include="myTrack.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\map.png" />
+    <Content Include="Assets\marker.png" />
+    <Content Include="Assets\world.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
