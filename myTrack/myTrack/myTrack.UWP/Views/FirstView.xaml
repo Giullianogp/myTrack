@@ -12,21 +12,33 @@
 
     <Grid x:Name="CompGrid">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF6C5B7B" Offset="0"/>
-                <GradientStop Color="#FF355C7D" Offset="1"/>
+                <GradientStop Color="#FF072946" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
 
-        <ListView ItemsSource="{Binding ListaCodigo}" 
-                      VerticalAlignment="Stretch" 
-                      HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="../Assets/logo.png"/>
+
+        <ListView Grid.Row="1" 
+                  Margin="5"
+                  ItemsSource="{Binding ListaCodigo}" 
+                  VerticalAlignment="Stretch" 
+                  HorizontalAlignment="Stretch"
+                  Header="Meus Códigos">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="#33FFFFFF" 
+                    <Grid x:Name="GridItem" 
+                          Width="300"
+                          Background="#33FFFFFF" 
                           Height="40"
-                          Width="200"
-                          Margin="5">
+                          Margin="0,3,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="28"/>
                             <ColumnDefinition Width="*"/>
@@ -53,10 +65,32 @@
                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
                                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
                         </Grid>
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
         </ListView>
+
+        <Button Grid.Row="2"
+                FontSize="15"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Stretch">
+                <Image Source="../Assets/map.png" 
+                       Height="25" 
+                       Width="25"
+                       Margin="5,0,10,0"/>
+                <TextBlock Text="Novo Código"
+                           FontSize="18"/>
+            </StackPanel>
+
+        </Button>
+
     </Grid>
 </views:MvxWindowsPage>

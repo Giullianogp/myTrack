@@ -24,6 +24,8 @@ namespace myTrack.UWP.Views
         {
             this.InitializeComponent();
             DataContext = ViewModel;
+
+
         }
 
         private void FirstView_OnLoaded(object sender, RoutedEventArgs e)
