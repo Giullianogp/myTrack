@@ -13,7 +13,7 @@
     <Grid x:Name="CompGrid">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF6C5B7B" Offset="0"/>
+                <GradientStop Color="#FF2F2836" Offset="0"/>
                 <GradientStop Color="#FF072946" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -26,19 +26,28 @@
 
         <Image Source="../Assets/logo.png"/>
 
-        <ListView Grid.Row="1" 
+        <ListView x:Name="lst"
+                  Grid.Row="1" 
                   Margin="5"
                   ItemsSource="{Binding ListaCodigo}" 
                   VerticalAlignment="Stretch" 
                   HorizontalAlignment="Stretch"
-                  Header="Meus Códigos">
+                  HorizontalContentAlignment="Stretch">
+            <ListView.Header>
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Meus Registros"/>
+            </ListView.Header>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
+
                     <Grid x:Name="GridItem" 
-                          Width="300"
-                          Background="#33FFFFFF" 
+                          HorizontalAlignment="Stretch"
                           Height="40"
                           Margin="0,3,0,0">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#33FFFFFF" Opacity="0.6"/>
+                        </Grid.Background>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="28"/>
                             <ColumnDefinition Width="*"/>
@@ -48,7 +57,7 @@
                                        Height="25"
                                        Width="25"/>
 
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" HorizontalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -56,21 +65,24 @@
 
                             <TextBlock Grid.Row="0"
                                        Text="{Binding Titulo}"
-                                       Foreground="White"
-                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                       Foreground="White"/>
                             <TextBlock Grid.Row="1"
                                        Text="{Binding Registro}"
-                                       Foreground="White"
-                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                       Foreground="White"/>
                         </Grid>
                     </Grid>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ListViewItemPresenter HorizontalAlignment="Stretch" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -79,7 +91,8 @@
         <Button Grid.Row="2"
                 FontSize="15"
                 VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch">
+                HorizontalAlignment="Stretch"
+                Command="{Binding NovoCommand}">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Stretch">
                 <Image Source="../Assets/map.png" 
